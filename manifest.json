@@ -1,0 +1,12 @@
+{
+  "name": "Virgin Trains Booking Automation",
+  "description": "Chrome extension to speed up booking tickets on the Virgin Trains site.",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": ["https://www.buytickets.virgintrains.co.uk/*"],
+      "js": ["trains.js"]
+    }
+  ],
+   "manifest_version": 2
+}
