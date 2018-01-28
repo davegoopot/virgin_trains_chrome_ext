@@ -1,6 +1,16 @@
+/**
+*
+* This extension fires for every page that matches https://www.buytickets.virgintrains.co.uk/*  (see the manifest.json)
+*  
+* The routing of the logic is:
+*     1. Register functions for DOM events we are interetsed in
+*     2. WIthin each function dispatch to a handler function based on the pathname of the URL, i.e. one function per pathname 
+*
+**/
+
 window.document.onkeypress = function(evt) {
     "use strict";
-    const page_dispatch = {
+    const page_dispatch_onload = {
         "/buytickets/travelessentials.aspx": travel_options,
         "/buytickets/shoppingbasket.aspx": change_seat,
     };
@@ -64,10 +74,36 @@ window.document.onkeypress = function(evt) {
     }
 
 
+	// Handler for the key press dispatching
     if (ctrl_y_pressed(evt)) {
         const web_path = document.location.pathname;
-        if (web_path in page_dispatch) {
-            page_dispatch[web_path]();
+        if (web_path in page_dispatch_keypress) {
+            page_dispatch_keypress[web_path]();
         }
     }
+};
+
+
+window.onload = function(evt) {
+    "use strict";
+
+    const page_dispatch_onload = {
+        "/buytickets/shoppingbasket.aspx": reason_on_business,
+    };
+		
+	
+	function reason_on_business() {
+	    document.querySelector('#travel_reason [value="BUSINESS"]').selected = true;
+	}
+	
+	
+	function dispatch_event(e) {
+        const web_path = document.location.pathname;
+        if (web_path in page_dispatch_onload) {
+            page_dispatch_onload[web_path]();
+        }	
+	}
+
+	// Kick off the handler for the page just loaded
+	dispatch_event(evt);
 };
