@@ -10,7 +10,7 @@
 
 window.document.onkeypress = function(evt) {
     "use strict";
-    const page_dispatch_onload = {
+    const page_dispatch_keypress = {
         "/buytickets/travelessentials.aspx": travel_options,
         "/buytickets/shoppingbasket.aspx": change_seat,
     };
@@ -76,10 +76,7 @@ window.document.onkeypress = function(evt) {
 
 	// Handler for the key press dispatching
     if (ctrl_y_pressed(evt)) {
-        const web_path = document.location.pathname;
-        if (web_path in page_dispatch_keypress) {
-            page_dispatch_keypress[web_path]();
-        }
+        dispatch_fn_for_path(document.location.pathname, page_dispatch_keypress);
     }
 };
 
@@ -95,15 +92,13 @@ window.onload = function(evt) {
 	function reason_on_business() {
 	    document.querySelector('#travel_reason [value="BUSINESS"]').selected = true;
 	}
-	
-	
-	function dispatch_event(e) {
-        const web_path = document.location.pathname;
-        if (web_path in page_dispatch_onload) {
-            page_dispatch_onload[web_path]();
-        }	
-	}
 
-	// Kick off the handler for the page just loaded
-	dispatch_event(evt);
+
+	dispatch_fn_for_path(document.location.pathname, page_dispatch_onload);
 };
+
+function dispatch_fn_for_path(web_path, fn_table) {
+    if (web_path in fn_table) {
+        fn_table[web_path]();
+    }
+}
