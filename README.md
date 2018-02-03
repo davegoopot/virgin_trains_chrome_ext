@@ -9,3 +9,13 @@ If you have the same problem and would like to extend the idea to
 handle your preferences please submit a pull request.
 
 dave@davepotts.software
+
+Testing While Developing
+------------------------
+
+To make changes and test:
+
+1. Clone this repo and make changes
+2. Open Chrome, More tools, Extensions, Load unpacked extension
+3. Pick the directory with your git repo in it
+4. Test if it works
