@@ -3,7 +3,7 @@
 * This extension fires for every page that matches https://www.buytickets.virgintrains.co.uk/*  (see the manifest.json)
 *  
 * The routing of the logic is:
-*     1. Register functions for DOM events we are interetsed in
+*     1. Register functions for DOM events we are interested in
 *     2. WIthin each function dispatch to a handler function based on the pathname of the URL, i.e. one function per pathname 
 *
 **/
