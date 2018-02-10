@@ -6,7 +6,12 @@
     {
       "matches": ["https://www.buytickets.virgintrains.co.uk/*"],
       "js": ["trains.js"]
+    },
+    {
+      "matches": ["https://www.buytickets.virgintrains.co.uk/buytickets/travelessentials.aspx"],
+      "js": ["travelessentials.js"]
     }
+
   ],
    "manifest_version": 2
 }
